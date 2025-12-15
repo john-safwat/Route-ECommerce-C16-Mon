@@ -5,13 +5,19 @@ import 'package:route_e_commerce_v2/features/commerce/domain/entities/category.d
 
 class CategoryWidget extends StatelessWidget {
   final Category category;
-  const CategoryWidget({super.key, required this.category});
+  final Function(Category) onItemClick;
+
+  const CategoryWidget({
+    super.key,
+    required this.onItemClick,
+    required this.category,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // TODO: Implement category tap action
+        onItemClick(category);
       },
       child: Column(
         spacing: 8,

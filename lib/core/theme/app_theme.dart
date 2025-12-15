@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:route_e_commerce_v2/core/theme/app_colors.dart';
 
 class AppTheme {
@@ -10,42 +9,42 @@ class AppTheme {
 
 
       textTheme: TextTheme(
-        headlineSmall: GoogleFonts.poppins(
+        headlineSmall: TextStyle(
           fontSize: 12,
           fontWeight: FontWeight.w400,
           color: colorScheme.secondary,
         ),
-        bodyMedium:GoogleFonts.poppins(
+        bodyMedium:TextStyle(
           fontSize: 16,
           color: colorScheme.onPrimary,
         ),
-        headlineMedium: GoogleFonts.poppins(
+        headlineMedium: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.w500,
           color: colorScheme.secondary,
         ),
 
-        labelSmall: GoogleFonts.poppins(
+        labelSmall: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w400,
           color: colorScheme.onPrimary,
         ),
-        titleSmall: GoogleFonts.poppins(
+        titleSmall: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w400,
           color: colorScheme.primary,
         ),
-        titleMedium: GoogleFonts.poppins(
+        titleMedium: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.w500,
           color: colorScheme.primary,
         ),
-        bodySmall: GoogleFonts.poppins(
+        bodySmall: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w400,
           color: colorScheme.secondary,
         ),
-        titleLarge: GoogleFonts.poppins(
+        titleLarge: TextStyle(
           fontSize: 18,
 
           color: colorScheme.onPrimary,
@@ -63,7 +62,7 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: false,
         focusColor: colorScheme.primary,
-        hintStyle: GoogleFonts.poppins(
+        hintStyle: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w300,
           color: AppColors.darkBlue.withValues(alpha: .6),

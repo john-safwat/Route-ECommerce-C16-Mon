@@ -1,7 +1,6 @@
 
 import 'package:route_e_commerce_v2/features/commerce/domain/entities/category.dart';
-import 'package:route_e_commerce_v2/features/products/domain/entity/product.dart';
-
+import 'package:route_e_commerce_v2/features/commerce/domain/entities/product.dart';
 abstract class DummyDataProvider {
   static List<Category> generateCategories() {
     List<Category> categories = [];
@@ -35,12 +34,9 @@ abstract class DummyDataProvider {
             'https://ecommerce.routemisr.com/Route-Academy-products/1680399913851-4.jpeg',
             'https://ecommerce.routemisr.com/Route-Academy-products/1680399913850-2.jpeg',
           ],
-          categoryId: '6439d5b90049ad0b52b90048',
-          brandId: '64089d5c24b25627a253159f',
           ratingsAverage: 2.8 + (i % 5) * 0.1,
           ratingsQuantity: 20 + i,
           quantity: 100 + i,
-          availableColors: ['Red', 'Black', 'Blue'],
         ),
       );
     }

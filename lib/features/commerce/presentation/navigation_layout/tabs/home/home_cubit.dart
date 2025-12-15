@@ -7,7 +7,9 @@ import 'package:route_e_commerce_v2/network/resources.dart';
 import 'package:route_e_commerce_v2/network/results.dart';
 
 @injectable
-class HomeCubit extends BaseCubit<HomeTabState, HomeTabEvents, void> {
+class HomeCubit
+    extends
+        BaseCubit<HomeTabState, HomeTabEvents, HomeNavigationEvents> {
   GetCategoriesUseCase getCategoriesUseCase;
 
   HomeCubit(this.getCategoriesUseCase) : super(HomeTabState());
@@ -19,6 +21,10 @@ class HomeCubit extends BaseCubit<HomeTabState, HomeTabEvents, void> {
         {
           await _getCategories();
         }
+      case OnCategoryItemClick():
+        {
+          emitNavigation(NavigateToProductsListScreen(action.category));
+        }
     }
   }
 
@@ -29,9 +35,7 @@ class HomeCubit extends BaseCubit<HomeTabState, HomeTabEvents, void> {
       case Success<List<Category>>():
         {
           emit(
-            state.copyWith(
-              categories: Resources.success(data: result.data),
-            ),
+            state.copyWith(categories: Resources.success(data: result.data)),
           );
         }
       case Failure<List<Category>>():

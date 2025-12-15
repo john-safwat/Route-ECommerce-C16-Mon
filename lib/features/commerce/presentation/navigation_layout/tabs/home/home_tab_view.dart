@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:route_e_commerce_v2/core/di/di.dart';
 import 'package:route_e_commerce_v2/core/l10n/translations/app_localizations.dart';
+import 'package:route_e_commerce_v2/core/routing/routes.dart';
 import 'package:route_e_commerce_v2/features/commerce/presentation/navigation_layout/tabs/home/home_cubit.dart';
 import 'package:route_e_commerce_v2/features/commerce/presentation/navigation_layout/tabs/home/home_tab_state.dart';
 import 'package:route_e_commerce_v2/features/commerce/presentation/navigation_layout/tabs/home/widgets/advertisements_list.dart';
@@ -23,6 +24,18 @@ class _HomeTabViewState extends State<HomeTabView> {
   void initState() {
     super.initState();
     homeCubit.doAction(LoadHomeTabData());
+    homeCubit.navigation.listen((navigationEvent) {
+      switch (navigationEvent) {
+        case NavigateToProductsListScreen():
+          {
+            Navigator.pushNamed(
+              context,
+              Routes.productsListRoute,
+              arguments: navigationEvent.category,
+            );
+          }
+      }
+    });
   }
 
   @override
@@ -39,7 +52,7 @@ class _HomeTabViewState extends State<HomeTabView> {
           const SliverToBoxAdapter(child: SizedBox(height: 16)),
           SectionTitle(title: locale.categories, viewAllVisibility: true),
           const SliverToBoxAdapter(child: SizedBox(height: 16)),
-          CategoriesList(cubit: homeCubit,),
+          CategoriesList(cubit: homeCubit),
           const SliverToBoxAdapter(child: SizedBox(height: 32)),
           SectionTitle(title: locale.homeAppliance),
           const SliverToBoxAdapter(child: SizedBox(height: 16)),

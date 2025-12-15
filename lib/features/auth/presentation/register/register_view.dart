@@ -1,7 +1,7 @@
 import 'package:cherry_toast/cherry_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:route_e_commerce_v2/core/di/service_locator.dart';
+import 'package:route_e_commerce_v2/core/di/di.dart';
 import 'package:route_e_commerce_v2/core/l10n/translations/app_localizations.dart';
 import 'package:route_e_commerce_v2/core/routing/routes.dart';
 import 'package:route_e_commerce_v2/core/theme/app_colors.dart';

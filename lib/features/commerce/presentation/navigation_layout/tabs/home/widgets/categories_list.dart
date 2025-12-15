@@ -37,20 +37,30 @@ class CategoriesList extends StatelessWidget {
                 childAspectRatio: 1.3,
               ),
               itemBuilder: (context, index) {
-                if(state.categories.status == Status.success) {
-                  return CategoryWidget(category: categories[index]);
-                }else{
+                if (state.categories.status == Status.success) {
+                  return CategoryWidget(
+                    category: categories[index],
+                    onItemClick: (category) {
+                      cubit.doAction(OnCategoryItemClick(category));
+                    },
+                  );
+                } else {
                   return Shimmer(
-                      gradient: LinearGradient(colors: [
+                    gradient: LinearGradient(
+                      colors: [
                         AppColors.grey.withAlpha(30),
-                        AppColors.grey.withAlpha(20)
-                      ]),
-                      child: CategoryWidget(category: categories[index])
+                        AppColors.grey.withAlpha(20),
+                      ],
+                    ),
+                    child: CategoryWidget(
+                      onItemClick: (category) {},
+                      category: categories[index],
+                    ),
                   );
                 }
               },
               scrollDirection: Axis.horizontal,
-              itemCount: categories.isEmpty? 20 : categories.length,
+              itemCount: categories.isEmpty ? 20 : categories.length,
             ),
           );
         },

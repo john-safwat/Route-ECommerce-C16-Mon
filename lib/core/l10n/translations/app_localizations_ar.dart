@@ -15,7 +15,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get welcomeBackToRoute => 'اهلا بكم في رووت';
 
   @override
-  String get pleaseSignInWithYourMail => 'يرجى تسجيل الدخول باستخدام بريدك الالكتروني';
+  String get pleaseSignInWithYourMail =>
+      'يرجى تسجيل الدخول باستخدام بريدك الالكتروني';
 
   @override
   String get mail => 'البريد الالكتروني';

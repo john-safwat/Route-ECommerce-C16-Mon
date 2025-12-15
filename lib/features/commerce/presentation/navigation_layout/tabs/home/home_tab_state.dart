@@ -15,3 +15,17 @@ class HomeTabState {
 sealed class HomeTabEvents {}
 
 class LoadHomeTabData extends HomeTabEvents {}
+class OnCategoryItemClick extends HomeTabEvents{
+  Category category;
+
+  OnCategoryItemClick(this.category);
+}
+
+
+sealed class HomeNavigationEvents{}
+
+class NavigateToProductsListScreen extends HomeNavigationEvents{
+  Category category;
+
+  NavigateToProductsListScreen(this.category);
+}

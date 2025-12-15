@@ -14,3 +14,19 @@ class CategoriesTabState {
 sealed class CategoriesTabEvents {}
 
 class LoadCategoriesEvent extends CategoriesTabEvents {}
+
+class OnCategoryItemClick extends CategoriesTabEvents{
+  Category category;
+
+  OnCategoryItemClick(this.category);
+}
+
+
+sealed class CategoriesTabNavigation {}
+class NavigateToProductsListScreen extends CategoriesTabNavigation{
+  Category category;
+
+  NavigateToProductsListScreen(this.category);
+}
+
+

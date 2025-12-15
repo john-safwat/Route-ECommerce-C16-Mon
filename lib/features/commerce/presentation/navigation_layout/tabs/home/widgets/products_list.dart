@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:route_e_commerce_v2/core/utils/dummy_data_provider.dart';
 import 'package:route_e_commerce_v2/core/widgets/custom_product_card.dart';
-import 'package:route_e_commerce_v2/features/products/domain/entity/product.dart';
+import 'package:route_e_commerce_v2/features/commerce/domain/entities/product.dart';
 
 class ProductsList extends StatelessWidget {
   const ProductsList({super.key});

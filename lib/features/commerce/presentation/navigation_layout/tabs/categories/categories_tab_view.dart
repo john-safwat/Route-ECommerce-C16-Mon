@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:route_e_commerce_v2/core/di/service_locator.dart';
+import 'package:route_e_commerce_v2/core/di/di.dart';
+import 'package:route_e_commerce_v2/core/routing/routes.dart';
 import 'package:route_e_commerce_v2/core/theme/app_colors.dart';
 import 'package:route_e_commerce_v2/core/utils/dummy_data_provider.dart';
 import 'package:route_e_commerce_v2/features/commerce/presentation/navigation_layout/tabs/categories/categories_tab_cubit.dart';
@@ -23,6 +24,18 @@ class _CategoriesTabViewState extends State<CategoriesTabView> {
   void initState() {
     super.initState();
     cubit.doAction(LoadCategoriesEvent());
+    cubit.navigation.listen((navigationState) {
+      switch (navigationState) {
+        case NavigateToProductsListScreen():
+          {
+            Navigator.pushNamed(
+              context,
+              Routes.productsListRoute,
+              arguments: navigationState.category,
+            );
+          }
+      }
+    });
   }
 
   @override
@@ -51,7 +64,12 @@ class _CategoriesTabViewState extends State<CategoriesTabView> {
                         ),
                     itemBuilder: (context, index) {
                       if (state.categories.status == Status.success) {
-                        return CategoryWidget(category: categories[index]);
+                        return CategoryWidget(
+                          category: categories[index],
+                          onItemClick: (category) {
+                            cubit.doAction(OnCategoryItemClick(category));
+                          },
+                        );
                       } else {
                         return Shimmer(
                           gradient: LinearGradient(
@@ -60,7 +78,10 @@ class _CategoriesTabViewState extends State<CategoriesTabView> {
                               AppColors.grey.withAlpha(20),
                             ],
                           ),
-                          child: CategoryWidget(category: categories[index]),
+                          child: CategoryWidget(
+                            category: categories[index],
+                            onItemClick: (_) {},
+                          ),
                         );
                       }
                     },

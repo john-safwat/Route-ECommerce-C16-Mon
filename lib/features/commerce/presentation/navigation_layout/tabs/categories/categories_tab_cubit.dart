@@ -9,7 +9,12 @@ import '../../../../domain/entities/category.dart';
 
 @injectable
 class CategoriesTabCubit
-    extends BaseCubit<CategoriesTabState, CategoriesTabEvents, void> {
+    extends
+        BaseCubit<
+          CategoriesTabState,
+          CategoriesTabEvents,
+          CategoriesTabNavigation
+        > {
   GetCategoriesUseCase getCategoriesUseCase;
 
   CategoriesTabCubit(this.getCategoriesUseCase) : super(CategoriesTabState());
@@ -20,6 +25,10 @@ class CategoriesTabCubit
       case LoadCategoriesEvent():
         {
           _getCategories();
+        }
+      case OnCategoryItemClick():
+        {
+          emitNavigation(NavigateToProductsListScreen(action.category));
         }
     }
   }
